@@ -237,7 +237,7 @@ function loadESXPlayer(identifier, playerId)
 			end
 
 			-- Job
-			if ESX.DoesJobExist(job2, grade2) then
+			if ESX.DoesJobExist(job2, grade) then
 				job2Object, grade2Object = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade2]
 			else
 				print(('[es_extended] [^3WARNING^7] Ignoring invalid job2 for %s [job2: %s, grade2: %s]'):format(identifier, job2, grade2))
