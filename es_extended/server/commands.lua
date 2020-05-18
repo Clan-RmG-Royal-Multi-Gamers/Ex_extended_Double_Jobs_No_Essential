@@ -19,8 +19,8 @@ end, true, {help = _U('command_setjob'), validate = true, arguments = {
 }})
 
 ESX.RegisterCommand('setjob2', 'admin', function(xPlayer, args, showError)
-	if ESX.DoesJobExist(args.job2, args.grade2) then
-		args.playerId.setJob2(args.job2, args.grade2)
+	if ESX.DoesJob2Exist(args.job, args.grade) then
+		args.playerId.setJob2(args.job, args.grade)
 	else
 		showError(_U('command_setjob2_invalid'))
 	end

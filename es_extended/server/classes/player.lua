@@ -337,9 +337,9 @@ function CreateExtendedPlayer(playerId, identifier, group, accounts, inventory, 
 		if ESX.DoesJob2Exist(job2, grade2) then
 			local job2Object, grade2Object = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade2]
 
-			self.job2.id    = jobObject.id
-			self.job2.name  = jobObject.name
-			self.job2.label = jobObject.label
+			self.job2.id    = job2Object.id
+			self.job2.name  = job2Object.name
+			self.job2.label = job2Object.label
 
 			self.job2.grade        = tonumber(grade2)
 			self.job2.grade_name   = grade2Object.name
