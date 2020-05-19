@@ -7,7 +7,7 @@ Version ex_extended du 17/05/2020 en cours de modification pour accepter le doub
 Si vous reperer des erreurs merci de les remontés et si vous savez comment les résoudres nous sommes preneurs.
 
 
-#Erreur actuel:
+# Erreur actuel:
 Lors de la connexion votre job2 et job2_grade de la table est vidé...
 
 Bonne utilisation
