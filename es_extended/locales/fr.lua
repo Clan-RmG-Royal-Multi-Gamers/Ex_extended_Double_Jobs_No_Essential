@@ -42,6 +42,7 @@ Locales['fr'] = {
 
   -- Salary related
   ['received_salary'] = 'vous avez reçu votre salaire: ~g~$%s~s~',
+  ['received_salary2'] = 'vous avez reçu votre deuxième salaire: ~g~$%s~s~',
   ['received_help'] = 'vous avez reçu une aide de l\'état: ~g~$%s~s~',
   ['company_nomoney'] = 'votre entreprise n\'a plus d\'argent pour vous payer!',
   ['received_paycheck'] = 'paiement reçu',
