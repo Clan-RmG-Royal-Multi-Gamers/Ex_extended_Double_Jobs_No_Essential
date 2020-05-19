@@ -1,3 +1,6 @@
+# www.Clan-RmG.com 
+# http://discord.gg/Y366bjZ
+
 # Ex_extended_Double_Jobs_No_Essential
 Double Job pour ex_extended de ESX-ORG qui ne fonctionne plus avec EssentialMod
 
