@@ -76,7 +76,6 @@ end)
 
 function loadESXPlayer(identifier, playerId)
 	local tasks = {}
-	local tasks2 = {}
 
 	local userData = {
 		accounts = {},
@@ -212,7 +211,7 @@ function loadESXPlayer(identifier, playerId)
 	end)
 	
 	-- Job2
-	table.insert(tasks2, function(cb2)
+	table.insert(tasks, function(cb)
 		MySQL.Async.fetchAll('SELECT accounts, job2, job2_grade, `group`, loadout, position, inventory FROM users WHERE identifier = @identifier', {
 			['@identifier'] = identifier
 		}, function(result)
