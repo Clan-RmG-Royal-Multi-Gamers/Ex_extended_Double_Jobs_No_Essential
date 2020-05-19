@@ -218,25 +218,9 @@ function loadESXPlayer(identifier, playerId)
 			local job2, grade2, job2Object, grade2Object = result[1].job2, tostring(result[1].job2_grade)
 			local foundAccounts, foundItems = {}, {}
 
-			-- Accounts
-			if result[1].accounts and result[1].accounts ~= '' then
-				local accounts = json.decode(result[1].accounts)
-
-				for account,money in pairs(accounts) do
-					foundAccounts[account] = money
-				end
-			end
-
-			for account,label in pairs(Config.Accounts) do
-				table.insert(userData.accounts, {
-					name = account,
-					money = foundAccounts[account] or Config.StartingAccountMoney[account] or 0,
-					label = label
-				})
-			end
 
 			-- Job
-			if ESX.DoesJobExist(job2, grade2) then
+			if ESX.DoesJob2Exist(job2, grade2) then
 				job2Object, grade2Object = ESX.Jobs[job2], ESX.Jobs[job2].grades[grade2]
 			else
 				print(('[es_extended] [^3WARNING^7] Ignoring invalid job2 for %s [job2: %s, grade2: %s]'):format(identifier, job2, grade2))
@@ -258,77 +242,6 @@ function loadESXPlayer(identifier, playerId)
 
 			if grade2Object.skin_male then userData.job2.skin_male = json.decode(grade2Object.skin_male) end
 			if grade2Object.skin_female then userData.job2.skin_female = json.decode(grade2Object.skin_female) end
-
-			-- Inventory
-			if result[1].inventory and result[1].inventory ~= '' then
-				local inventory = json.decode(result[1].inventory)
-
-				for name,count in pairs(inventory) do
-					local item = ESX.Items[name]
-
-					if item then
-						foundItems[name] = count
-					else
-						print(('[es_extended] [^3WARNING^7] Ignoring invalid item "%s" for "%s"'):format(name, identifier))
-					end
-				end
-			end
-
-			for name,item in pairs(ESX.Items) do
-				local count = foundItems[name] or 0
-				if count > 0 then userData.weight = userData.weight + (item.weight * count) end
-
-				table.insert(userData.inventory, {
-					name = name,
-					count = count,
-					label = item.label,
-					weight = item.weight,
-					usable = ESX.UsableItemsCallbacks[name] ~= nil,
-					rare = item.rare,
-					canRemove = item.canRemove
-				})
-			end
-
-			table.sort(userData.inventory, function(a, b)
-				return a.label < b.label
-			end)
-
-			-- Group
-			if result[1].group then
-				userData.group = result[1].group
-			else
-				userData.group = 'user'
-			end
-
-			-- Loadout
-			if result[1].loadout and result[1].loadout ~= '' then
-				local loadout = json.decode(result[1].loadout)
-
-				for name,weapon in pairs(loadout) do
-					local label = ESX.GetWeaponLabel(name)
-
-					if label then
-						if not weapon.components then weapon.components = {} end
-						if not weapon.tintIndex then weapon.tintIndex = 0 end
-
-						table.insert(userData.loadout, {
-							name = name,
-							ammo = weapon.ammo,
-							label = label,
-							components = weapon.components,
-							tintIndex = weapon.tintIndex
-						})
-					end
-				end
-			end
-
-			-- Position
-			if result[1].position and result[1].position ~= '' then
-				userData.coords = json.decode(result[1].position)
-			else
-				print('[es_extended] [^3WARNING^7] Column "position" in "users" table is missing required default value. Using backup coords, fix your database.')
-				userData.coords = {x = -269.4, y = -955.3, z = 31.2, heading = 205.8}
-			end
 
 			cb()
 		end)
@@ -598,7 +511,6 @@ ESX.RegisterServerCallback('esx:getPlayerData', function(source, cb)
 		money        = xPlayer.getMoney()
 	})
 end)
-
 
 ESX.RegisterServerCallback('esx:getOtherPlayerData', function(source, cb, target)
 	local xPlayer = ESX.GetPlayerFromId(target)

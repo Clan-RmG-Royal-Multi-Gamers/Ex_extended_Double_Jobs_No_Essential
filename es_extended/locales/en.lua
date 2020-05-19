@@ -42,10 +42,12 @@ Locales['en'] = {
 
   -- Salary related
   ['received_salary'] = 'you received your salary: ~g~$%s~s~',
-  ['received_salary'] = 'you received your secondary salary: ~g~$%s~s~',
+  ['received_salary2'] = 'you received your secondary salary: ~g~$%s~s~',
   ['received_help'] = 'you received your welfare check: ~g~$%s~s~',
+  ['received_help2'] = 'you received your welfare check: ~g~$%s~s~',
   ['company_nomoney'] = 'the company you\'re employeed at is too poor to pay out your salary',
   ['received_paycheck'] = 'received paycheck',
+  ['received_paycheck2'] = 'received paycheck',
   ['bank'] = 'maze Bank',
   ['account_bank'] = 'bank',
   ['account_black_money'] = 'dirty Money',
