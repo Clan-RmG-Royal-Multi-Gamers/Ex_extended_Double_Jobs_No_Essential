@@ -599,6 +599,7 @@ ESX.RegisterServerCallback('esx:getPlayerData', function(source, cb)
 	})
 end)
 
+
 ESX.RegisterServerCallback('esx:getOtherPlayerData', function(source, cb, target)
 	local xPlayer = ESX.GetPlayerFromId(target)
 
